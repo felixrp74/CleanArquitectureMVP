@@ -1,8 +1,9 @@
 package com.example.cleanarquitecturemvp.presentation.login.presenter
 
+import com.example.cleanarquitecturemvp.domain.interactor.logininteractor.SignInInteractor
 import com.example.cleanarquitecturemvp.presentation.login.LoginContract
 
-class LoginPresenter( ) : LoginContract.LoginPresenter {
+class LoginPresenter(private val signInInteractor: SignInInteractor) : LoginContract.LoginPresenter {
 
     private var view: LoginContract.LoginView? = null
 
@@ -20,13 +21,27 @@ class LoginPresenter( ) : LoginContract.LoginPresenter {
 
     override fun signInUserWithEmailAndPassword(email: String, password: String) {
         view?.showProgressBar()
-        view?.showError("hola")
+        signInInteractor.SignInWithEmailAndPassword(email,password,object : SignInInteractor.SignInCallback{
 
+            override fun onSignInSuccess() {
+                if (isViewAttached()){
+                    view?.hideProgressBar()
+                    view?.navigateToMain()
+                }
+            }
+
+            override fun onSignInFailure(errorMsg: String) {
+                if (isViewAttached()){
+                    view?.hideProgressBar()
+                    view?.showError(errorMsg)
+                }
+            }
+
+        })
     }
 
     override fun checkEmptyFields(email: String, password: String):Boolean {
         return email.isEmpty() || password.isEmpty()
     }
-
 
 }

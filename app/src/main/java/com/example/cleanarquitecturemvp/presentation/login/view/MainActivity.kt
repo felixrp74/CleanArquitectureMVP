@@ -1,10 +1,13 @@
 package com.example.cleanarquitecturemvp.presentation.login.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.Toast
 import com.example.cleanarquitecturemvp.base.BaseActivity
 import com.example.cleanarquitecturemvp.databinding.ActivityMainBinding
+import com.example.cleanarquitecturemvp.domain.interactor.logininteractor.SignInInteractorImpl
 import com.example.cleanarquitecturemvp.presentation.login.LoginContract
 import com.example.cleanarquitecturemvp.presentation.login.presenter.LoginPresenter
 
@@ -16,17 +19,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), LoginContract.LoginVie
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        presenter = LoginPresenter()
+        presenter = LoginPresenter(SignInInteractorImpl())
         presenter.attachView(this)
 
         binding.btnSignIn.setOnClickListener {
             signIn()
         }
-
     }
 
     override fun showError(msgError: String) {
-        Toast.makeText(applicationContext, msgError, Toast.LENGTH_SHORT).show()
+        toast(applicationContext,msgError)
     }
 
     override fun showProgressBar() {
@@ -51,7 +53,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), LoginContract.LoginVie
     }
 
     override fun navigateToMain() {
-        TODO("Not yet implemented")
+        Intent(this, HomeActivity::class.java).also {
+            startActivity(it)
+        }
     }
 
     override fun navigateToRegister() {

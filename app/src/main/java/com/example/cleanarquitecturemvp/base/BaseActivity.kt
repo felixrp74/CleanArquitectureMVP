@@ -27,12 +27,11 @@ abstract class BaseActivity<B : ViewBinding> : AppCompatActivity() {
 
     abstract fun getViewBinding(): B
 
-    fun Context.showToast(
+    fun Context.toast(
         context: Context = applicationContext,
         message: String,
         duration: Int = Toast.LENGTH_SHORT
     ) {
         Toast.makeText(context, message, duration).show()
     }
-
 }

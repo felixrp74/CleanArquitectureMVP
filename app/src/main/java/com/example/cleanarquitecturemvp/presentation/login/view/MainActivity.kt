@@ -6,15 +6,20 @@ import android.widget.Toast
 import com.example.cleanarquitecturemvp.base.BaseActivity
 import com.example.cleanarquitecturemvp.databinding.ActivityMainBinding
 import com.example.cleanarquitecturemvp.presentation.login.LoginContract
+import com.example.cleanarquitecturemvp.presentation.login.presenter.LoginPresenter
 
-class MainActivity : BaseActivity<ActivityMainBinding>(), LoginContract.View {
+class MainActivity : BaseActivity<ActivityMainBinding>(), LoginContract.LoginView {
     override fun getViewBinding() = ActivityMainBinding.inflate(layoutInflater)
+
+    private lateinit var presenter: LoginPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        presenter = LoginPresenter()
+        presenter.attachView(this)
+
         binding.btnSignIn.setOnClickListener {
-            Toast.makeText(this, "TIENE HAMBRE", Toast.LENGTH_SHORT).show()
             signIn()
         }
 
@@ -33,11 +38,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), LoginContract.View {
     }
 
     override fun signIn() {
-        showToast(this, "hola lluvia")
+        val email = binding.etEmailSignIn.text.trim().toString()
+        val password = binding.etPasswordSignIn.text.trim().toString()
+
+        if (presenter.checkEmptyFields(email,password)) toast(this, "Empty fields")
+        else presenter.signInUserWithEmailAndPassword(email,password)
 
     }
 
     override fun signUp() {
+        TODO("Not yet implemented")
+    }
+
+    override fun navigateToMain() {
+        TODO("Not yet implemented")
+    }
+
+    override fun navigateToRegister() {
         TODO("Not yet implemented")
     }
 }

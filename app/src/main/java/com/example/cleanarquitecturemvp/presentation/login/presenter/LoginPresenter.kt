@@ -11,7 +11,7 @@ class LoginPresenter(private val signInInteractor: SignInInteractor) : LoginCont
         this.view = view
     }
 
-    override fun deattachedView() {
+    override fun detachedView() {
         this.view = null
     }
 
@@ -20,8 +20,10 @@ class LoginPresenter(private val signInInteractor: SignInInteractor) : LoginCont
     }
 
     override fun signInUserWithEmailAndPassword(email: String, password: String) {
+
         view?.showProgressBar()
-        signInInteractor.SignInWithEmailAndPassword(email,password,object : SignInInteractor.SignInCallback{
+
+        signInInteractor.signInWithEmailAndPassword(email,password,object : SignInInteractor.SignInCallback{
 
             override fun onSignInSuccess() {
                 if (isViewAttached()){

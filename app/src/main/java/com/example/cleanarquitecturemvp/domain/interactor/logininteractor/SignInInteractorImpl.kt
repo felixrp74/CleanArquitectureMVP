@@ -12,7 +12,7 @@ const val TAG = "SignInInteractorImpl"
 class SignInInteractorImpl : SignInInteractor {
     private lateinit var auth: FirebaseAuth
 
-    override fun SignInWithEmailAndPassword(
+    override fun signInWithEmailAndPassword(
         email: String,
         password: String,
         listener: SignInInteractor.SignInCallback

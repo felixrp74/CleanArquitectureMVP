@@ -10,9 +10,10 @@ import com.example.cleanarquitecturemvp.databinding.ActivityMainBinding
 import com.example.cleanarquitecturemvp.domain.interactor.logininteractor.SignInInteractorImpl
 import com.example.cleanarquitecturemvp.presentation.login.LoginContract
 import com.example.cleanarquitecturemvp.presentation.login.presenter.LoginPresenter
+import com.example.cleanarquitecturemvp.presentation.register.view.RegisterActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>(), LoginContract.LoginView {
-    override fun getViewBinding() = ActivityMainBinding.inflate(layoutInflater)
+
 
     private lateinit var presenter: LoginPresenter
 
@@ -25,7 +26,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), LoginContract.LoginVie
         binding.btnSignIn.setOnClickListener {
             signIn()
         }
+
+        binding.btnGoSignUp.setOnClickListener {
+            navigateToRegister()
+        }
     }
+
+    override fun getViewBinding() = ActivityMainBinding.inflate(layoutInflater)
 
     override fun showError(msgError: String) {
         toast(applicationContext,msgError)
@@ -59,6 +66,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), LoginContract.LoginVie
     }
 
     override fun navigateToRegister() {
-        TODO("Not yet implemented")
+        Intent(this, RegisterActivity::class.java).also {
+            startActivity(it)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.detachedView()
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        presenter.detachedView()
     }
 }

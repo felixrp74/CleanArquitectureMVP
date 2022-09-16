@@ -14,7 +14,7 @@ interface LoginContract {
 
     interface LoginPresenter{
         fun attachView(view:LoginView)
-        fun deattachedView()
+        fun detachedView()
         fun isViewAttached():Boolean
         fun signInUserWithEmailAndPassword(email:String,password:String)
         fun checkEmptyFields(email:String,password: String):Boolean

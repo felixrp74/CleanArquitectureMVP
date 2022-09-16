@@ -57,19 +57,25 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>(), RegisterContra
 
         if (presenter.checkEmptyFullname(fullname)) {
             binding.etFullNameSignUp.error = "This is empty"
+            return
         }
         if (presenter.checkEmptyEmail(email)) {
-            binding.etFullNameSignUp.error = "This is empty"
+            binding.etEmailSignUp.error = "This is empty"
+            return
         }
         if (presenter.checkEmptyPasswords(password1,password2)) {
             binding.etPassword1SignUp.error = "Password are empty"
             binding.etPassword2SignUp.error = "Password are empty"
+            return
         }
         if (!presenter.checkPasswordsMatch(password1,password2)) {
-            binding.etFullNameSignUp.error = "Passwords are different"
+            binding.etPassword1SignUp.error = "Passwords are different"
+            binding.etPassword2SignUp.error = "Passwords are different"
+            return
         }
         if (!presenter.checkValidEmail(email)){
             binding.etEmailSignUp.error = "Email invalid"
+            return
         }
 
         presenter.signUp(fullname,email,password1)
@@ -78,6 +84,7 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding>(), RegisterContra
     override fun navigateToMain() {
         Intent(this, HomeActivity::class.java).also {
             startActivity(it)
+            finish()
         }
     }
 

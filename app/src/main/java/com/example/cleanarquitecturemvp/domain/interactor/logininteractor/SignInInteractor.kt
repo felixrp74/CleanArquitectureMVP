@@ -7,7 +7,6 @@ interface SignInInteractor {
         fun onSignInFailure(errorMsg: String)
     }
 
-    //fun signInWithEmailAndPassword(email: String, password: String, listener: SignInCallback)
     suspend fun signInWithEmailAndPassword(email: String, password: String)
 
 

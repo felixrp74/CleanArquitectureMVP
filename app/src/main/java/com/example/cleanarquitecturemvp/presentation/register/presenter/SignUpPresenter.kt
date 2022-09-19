@@ -2,7 +2,6 @@ package com.example.cleanarquitecturemvp.presentation.register.presenter
 
 import androidx.core.util.PatternsCompat
 import com.example.cleanarquitecturemvp.domain.interactor.registerinteractor.SignUpInteractor
-import com.example.cleanarquitecturemvp.presentation.login.LoginContract
 import com.example.cleanarquitecturemvp.presentation.register.RegisterContract
 
 class SignUpPresenter (val signUpInteractor: SignUpInteractor): RegisterContract.RegisterPresenter {

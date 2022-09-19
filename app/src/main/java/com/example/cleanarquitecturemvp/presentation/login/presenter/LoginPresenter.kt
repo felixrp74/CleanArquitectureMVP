@@ -49,7 +49,7 @@ class LoginPresenter(private val signInInteractor: SignInInteractor) : LoginCont
                     view?.showError(e.message)
                 }
             }
-        } 
+        }
     }
 
     override fun checkEmptyFields(email: String, password: String): Boolean {

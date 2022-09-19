@@ -1,4 +1,4 @@
 package com.example.cleanarquitecturemvp.presentation.passwordrecover.exceptions
 
-class FirebasePasswordRecoverException {
+class FirebasePasswordRecoverException(errorMessage:String?):Exception(errorMessage) {
 }

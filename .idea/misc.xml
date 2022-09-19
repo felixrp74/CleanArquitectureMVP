@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/felix/AndroidStudioProjects/CleanArquitectureMVP/app/src/main/res/layout/activity_home.xml" value="0.15670289855072464" />
         <entry key="..\:/Users/felix/AndroidStudioProjects/CleanArquitectureMVP/app/src/main/res/layout/activity_main.xml" value="0.1634963768115942" />
+        <entry key="..\:/Users/felix/AndroidStudioProjects/CleanArquitectureMVP/app/src/main/res/layout/activity_password_recover.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/felix/AndroidStudioProjects/CleanArquitectureMVP/app/src/main/res/layout/activity_register.xml" value="0.15942028985507245" />
         <entry key="..\:/Users/felix/AndroidStudioProjects/CleanarquitectureMVP/app/src/main/res/layout/activity_home.xml" value="0.17481884057971014" />
         <entry key="..\:/Users/felix/AndroidStudioProjects/CleanarquitectureMVP/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />

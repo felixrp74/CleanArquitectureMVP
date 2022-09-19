@@ -3,17 +3,15 @@ package com.example.cleanarquitecturemvp.presentation.login.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
-import android.widget.Toast
 import com.example.cleanarquitecturemvp.base.BaseActivity
 import com.example.cleanarquitecturemvp.databinding.ActivityMainBinding
 import com.example.cleanarquitecturemvp.domain.interactor.logininteractor.SignInInteractorImpl
 import com.example.cleanarquitecturemvp.presentation.login.LoginContract
 import com.example.cleanarquitecturemvp.presentation.login.presenter.LoginPresenter
+import com.example.cleanarquitecturemvp.presentation.passwordrecover.view.PasswordRecoverActivity
 import com.example.cleanarquitecturemvp.presentation.register.view.RegisterActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>(), LoginContract.LoginView {
-
 
     private lateinit var presenter: LoginPresenter
 
@@ -29,6 +27,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), LoginContract.LoginVie
 
         binding.btnGoSignUp.setOnClickListener {
             navigateToRegister()
+        }
+
+        binding.btnGoPasswordRecover.setOnClickListener {
+            navigateToPasswordRecover()
         }
     }
 
@@ -55,8 +57,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), LoginContract.LoginVie
 
     }
 
-    override fun signUp() {
-        TODO("Not yet implemented")
+    override fun navigateToPasswordRecover() {
+        Intent(this, PasswordRecoverActivity::class.java).also {
+            startActivity(it)
+        }
+
     }
 
     override fun navigateToMain() {

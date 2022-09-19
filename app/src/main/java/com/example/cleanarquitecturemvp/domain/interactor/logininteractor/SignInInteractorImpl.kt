@@ -18,7 +18,7 @@ class SignInInteractorImpl : SignInInteractor {
         listener: SignInInteractor.SignInCallback
     ) {
 
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+        FirebaseAuth.getInstance().signInWithEmailAndPassword (email, password)
             .addOnCompleteListener {
                 if (it.isSuccessful) listener.onSignInSuccess()
                 else listener.onSignInFailure(it.exception?.message!!)

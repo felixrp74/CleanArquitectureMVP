@@ -34,7 +34,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), LoginContract.LoginVie
 
     override fun getViewBinding() = ActivityMainBinding.inflate(layoutInflater)
 
-    override fun showError(msgError: String) {
+    override fun showError(msgError: String?) {
         toast(applicationContext,msgError)
     }
 

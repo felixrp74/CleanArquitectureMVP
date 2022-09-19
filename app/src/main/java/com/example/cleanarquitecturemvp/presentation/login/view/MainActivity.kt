@@ -74,10 +74,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), LoginContract.LoginVie
     override fun onDestroy() {
         super.onDestroy()
         presenter.detachedView()
+        presenter.detachedJob()
     }
 
     override fun onDetachedFromWindow() {
         super.onDetachedFromWindow()
         presenter.detachedView()
+        presenter.detachedJob()
     }
 }
